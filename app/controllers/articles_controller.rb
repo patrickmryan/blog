@@ -13,16 +13,19 @@ class ArticlesController < ApplicationController
   end
 
   def new
+    @article = Article.new()
   end
 
   def create
 
-    #self.render(:plain => self.params()[:article].inspect)
-
     @article = Article.new(article_params())
 
-    @article.save
-    self.redirect_to(@article)
+    success = @article.save
+    if success
+      self.redirect_to(@article)
+    else
+      self.render('new')
+    end
 
   end
 
