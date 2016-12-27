@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20161227170647) do
     t.integer  "article_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["articles_id"], name: "index_comments_on_articles_id"
+    t.index ["article_id"], name: "index_comments_on_article_id"
   end
 
 end
