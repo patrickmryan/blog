@@ -3,11 +3,12 @@ class CommentsController < ApplicationController
     
     @article = Article.find(params[:article_id])
 
-    #print "saving comment for " + @article.to_s + "\n"
+    print "saving comment for " + @article.to_s + "\n"
     p = comment_params
-    #print "comments = " + p.to_s + "\n"
+    print "comments = " + p.to_s + "\n"
       
     @comment = @article.comments.create(p)   ##(comment_params)
+    print "after saving, comment = " + @comment.to_s + "\n"
     
     redirect_to article_path(@article)
   end
