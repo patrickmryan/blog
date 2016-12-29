@@ -1,20 +1,23 @@
 class CommentsController < ApplicationController
   def create
-    
+
     @article = Article.find(params[:article_id])
 
-    print "saving comment for " + @article.to_s + "\n"
-    p = comment_params
-    print "comments = " + p.to_s + "\n"
-      
-    @comment = @article.comments.create(p)   ##(comment_params)
-    print "after saving, comment = " + @comment.to_s + "\n"
+
+    @comment = @article.comments.create(comment_params)
     
+#    print "comments class is " + @article.comments.class.to_s + "\n"
+#    print "after saving, comment = " + @comment.to_s + "\n"
+#    print "commenter = " + @comment.commenter + "\n"
+#    print "body = " + @comment.body + "\n"
+   
     redirect_to article_path(@article)
+    
   end
- 
+
   private
-    def comment_params
-      params.require(:comment).permit(:commenter, :body)
-    end
+
+  def comment_params
+    params.require(:comment).permit(:commenter, :body)
+  end
 end
