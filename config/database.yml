@@ -12,8 +12,11 @@ require 'json'
 
 text = ENV['VCAP_SERVICES']
 vcap = JSON.parse(text)
-cleardb_hash = vcap["cleardb"]
-element = cleardb_hash.first()  # this is unreliable
+cleardb_databases = vcap["cleardb"]
+
+# this is unreliable. probably need specific identifier for database
+element = cleardb_databases.first() 
+
 cred_hash = element["credentials"]
 uri = cred_hash["uri"]
 
