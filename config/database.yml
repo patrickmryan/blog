@@ -11,10 +11,11 @@ require 'json'
 # extract the database URL from VCAP_SERVICES
 
 text = ENV['VCAP_SERVICES']
-vcap = JSON.parse(text)
-cleardb_databases = vcap["cleardb"]
+services = JSON.parse(text)
+cleardb_databases = services["cleardb"]
 
-# this is unreliable. probably need specific identifier for database
+# VCAP includes an array of databases. We are assuming here that
+# there is only one.
 element = cleardb_databases.first() 
 
 cred_hash = element["credentials"]
